@@ -1,0 +1,131 @@
+:root {
+	--var-header-bg: #ffffff55;
+	--var-body-bg: #999;
+	--var-body-fc: #FFCF40;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	background-color: var(--var-body-bg);
+	color: var(--var-body-fc);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+	width: 6px;
+}
+body::-webkit-scrollbar-track {
+	background: var(--var-body-bg);
+}
+body::-webkit-scrollbar-thumb {
+	background-color: var(--var-body-fc);
+	border-radius: 2px;
+	border: none;
+}
+
+/* ---------------------------------- */
+
+.header {
+	z-index: 2;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 1rem;
+	background-color: var(--var-header-bg);
+	align-items: center;
+	justify-content: center;
+}
+
+.header_block {
+	margin: 0 1%;
+	padding: 10px 15px;
+	font-size: 14pt;
+	font-weight: 500;
+	color: var(--var-body-fc);
+	background-color: #ffffff00;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+}
+
+/* ------------------------------------ */
+
+.block {
+	width: 100%;
+	height: 100%;
+}
+
+.block span {
+	background-color: #ffffff00;
+}
+
+.block_intro {
+	display: grid;
+	grid-template-columns: repeat(12, 75px);
+	grid-template-rows: repeat(12, 50px);
+	width: 100%;
+	height: 658px;
+	background-color: #ffffff00;
+}
+
+.block_logo {
+	grid-column-start: 2;
+	grid-column-end: 6;
+	grid-row-start: 6;
+	grid-row-end: 7;
+	font-size: 24pt;
+	text-align: left;
+	background-color: #ffffff00;
+}
+
+.block_text {
+	grid-column-start: 2;
+	grid-column-end: 7;
+	grid-row-start: 7;
+	grid-row-end: 8;
+	font-size: 18pt;
+	text-align: left;
+	background-color: #ffffff00;
+}
+
+/* ---------------------------------- */
+
+.projects {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 658px;
+	margin: 1rem 0;
+	background-color: #ffffff00;
+	align-items: center;
+	justify-content: center;
+}
+
+.projects_logo {
+	width: 100%;
+	margin: 0 0 1rem 0;
+	padding: 3rem 0 0 4rem;
+	font-size: 24pt;
+	text-align: left;
+	background-color: #ffffff00;
+}
+
+.projects_block {
+	display: grid;
+	grid-template-columns: 25% 25% 25%;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.project {
+	display: inline-block;
+	width: 275px;
+	height: 275px;
+	margin: 1.5rem 1rem;
+	background-color: #fff;
+}
