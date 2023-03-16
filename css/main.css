@@ -116,7 +116,7 @@ body::-webkit-scrollbar-thumb {
 .projects_block {
 	display: grid;
 	grid-template-columns: repeat(3, 50vh);
-	grid-template-rows: repeat(3, 30vh);
+	grid-template-rows: repeat(3, 28vh);
 	grid-gap: 1rem;
 	width: 100%;
 	height: 100%;
@@ -140,6 +140,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 720px) {
+	.projects_block {
+		grid-template-columns: repeat(1, 50vh);
+		grid-template-rows: repeat(1, 28vh);
+	}
 	.block {
 		width: 100%;
 		height: 100%;
