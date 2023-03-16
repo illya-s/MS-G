@@ -138,3 +138,10 @@ body::-webkit-scrollbar-thumb {
 .project_img:hover {
 	background-color: #99999988;
 }
+
+@media screen and (max-width: 720px) {
+	.block {
+		width: 100%;
+		height: 100%;
+	}
+}
