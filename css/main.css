@@ -115,7 +115,9 @@ body::-webkit-scrollbar-thumb {
 
 .projects_block {
 	display: grid;
-	grid-template-columns: 25% 25% 25%;
+	grid-template-columns: repeat(3, 50vh);
+	grid-template-rows: repeat(3, 50vh);
+	grid-gap: 1rem;
 	width: 100%;
 	height: 100%;
 	align-items: center;
@@ -126,9 +128,8 @@ body::-webkit-scrollbar-thumb {
 	display: grid;
 	grid-template-columns: repeat(10, 10%);
 	grid-template-rows: repeat(10, 10%);
-	width: 275px;
-	height: 275px;
-	margin: 1.5rem 1rem;
+	width: 100%;
+	height: 100%;
 	background-color: #fff;
 	align-items: center;
 	justify-content: center;
