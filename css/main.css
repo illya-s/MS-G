@@ -123,9 +123,38 @@ body::-webkit-scrollbar-thumb {
 }
 
 .project {
-	display: inline-block;
+	display: grid;
+	grid-template-columns: repeat(10, 10%);
+	grid-template-rows: repeat(10, 10%);
 	width: 275px;
 	height: 275px;
 	margin: 1.5rem 1rem;
 	background-color: #fff;
+	align-items: center;
+	justify-content: center;
+}
+
+.img_1 {
+	grid-column-start: 1;
+	grid-column-end: 11;
+	grid-row-start: 1;
+	grid-row-end: 5;
+	width: 100%;
+	height: 100%;
+}
+.img_2 {
+	grid-column-start: 1;
+	grid-column-end: 5;
+	grid-row-start: 5;
+	grid-row-end: 11;
+	width: 100%;
+	height: 100%;
+}
+.img_3 {
+	grid-column-start: 5;
+	grid-column-end: 9;
+	grid-row-start: 5;
+	grid-row-end: 11;
+	width: 100%;
+	height: 100%;
 }
