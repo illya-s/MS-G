@@ -116,7 +116,7 @@ body::-webkit-scrollbar-thumb {
 .projects_block {
 	display: grid;
 	grid-template-columns: repeat(3, 50vh);
-	grid-template-rows: repeat(3, 28vh);
+	grid-template-rows: repeat(3, 34vh);
 	grid-gap: 1rem;
 	width: 100%;
 	height: 100%;
@@ -127,22 +127,33 @@ body::-webkit-scrollbar-thumb {
 .project {
 	width: 100%;
 	height: 100%;
-	background-color: #fff;
 }
 
 .project_img {
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	transition: 0.5s;
 }
 .project_img:hover {
 	background-color: #99999988;
 }
 
+.project_text {
+	width: 100%;
+	height: 10%;
+	text-align: center;
+	text-decoration: none;
+	outline: none;
+	transition: 0.5s;
+}
+.project_text:hover {
+	background-color: #99999988;
+}
+
 @media screen and (max-width: 720px) {
 	.projects_block {
 		grid-template-columns: repeat(1, 50vh);
-		grid-template-rows: repeat(1, 28vh);
+		grid-template-rows: repeat(1, 30vh);
 	}
 	.block {
 		width: 100%;
