@@ -13,6 +13,6 @@ VANTA.RINGS({
   gyroControls: true,
   minHeight: 250.00,
   minWidth: 150.00,
-  scale: 1.00,
-  scaleMobile: 1.00
+  scale: 0.75,
+  scaleMobile: 0.50
 })
