@@ -3,6 +3,6 @@ VANTA.RINGS({
   mouseControls: true,
   touchControls: true,
   gyroControls: true,
-  scale: 2.00,
+  scale: 1.00,
   scaleMobile: 1.00
 })
