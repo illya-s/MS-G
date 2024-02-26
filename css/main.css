@@ -1,6 +1,6 @@
 :root {
 	--var-body-bg: #FFFFFF;
-	--var-body-fc: #6DD5D7;
+	--var-body-fc: #fff;
 }
 
 * {
@@ -50,7 +50,6 @@ header {
 	background-color: #202428;
 }
 
-/* ------ */
 /* -main- */
 main {
 	display: flex;
@@ -87,12 +86,21 @@ main {
 
 /* projects */
 .projects {
-	display: grid;
 	width: 90%;
-	grid-template-columns: repeat(3, 1fr);
-	grid-auto-rows: 1fr;
-	grid-column-gap: 10px;
-	grid-row-gap: 1em;
+	columns: 4 auto;
+	gap: 15px;
+}
+.project {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px 0;
+	width: fit-content;
+	border-radius: 10px;
+	background: #c9c9c9;
 	align-items: center;
+	justify-content: space-between;
+	page-break-inside: avoid;
+  break-inside: avoid;
 }
 /* ------ */
