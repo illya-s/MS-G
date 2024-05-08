@@ -1,0 +1,36 @@
+.portfolio {
+	padding: 5px 10px;
+	font-size: 18pt;
+	color: var(--fc-midle);
+	align-self: self-start;
+}
+
+
+.projects {
+	width: 100%;
+	padding: 15px;
+	display: flex;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	align-items: flex-start;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+.project {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 10px 0;
+	width: fit-content;
+	border-radius: 10px;
+	background: #c9c9c9;
+	align-items: center;
+	justify-content: space-between;
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
+.project > img {
+	width: auto;
+	height: 145px;
+}
