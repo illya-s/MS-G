@@ -23,12 +23,15 @@
 
 .info {
 	position: absolute;
-	top: 50px;
-	left: 50px;
+	top: 50px; left: 50px;
+	max-width: calc(100% - 50px);
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
 	width: max-content;
+}
+.info > p {
+	word-break: break-word;
 }
 
 

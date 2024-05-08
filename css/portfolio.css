@@ -21,16 +21,19 @@
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	padding: 10px 0;
-	width: fit-content;
+	padding: 10px;
+	/* width: max-content; */
+	max-width: fit-content;
 	border-radius: 10px;
 	background: #c9c9c9;
 	align-items: center;
 	justify-content: space-between;
-	page-break-inside: avoid;
-	break-inside: avoid;
 }
 .project > img {
 	width: auto;
 	height: 145px;
+}
+.project > p {
+	max-width: 260px;
+	word-break: break-word;
 }
