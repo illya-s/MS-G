@@ -54,11 +54,12 @@ main {
 
 footer {
 	height: fit-content;
-	padding: 20px 15px;
+	padding: 20px 25px;
 	display: flex;
 	flex-direction: column;
 	background-color: #202428;
 }
 footer > h2 {
 	color: var(--fc-body);
+	font: normal .9em sans-serif;
 }

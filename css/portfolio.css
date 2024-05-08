@@ -22,10 +22,9 @@
 	flex-direction: column;
 	gap: 10px;
 	padding: 10px;
-	/* width: max-content; */
 	max-width: fit-content;
 	border-radius: 10px;
-	background: #c9c9c9;
+	background: var(--bl-color);
 	align-items: center;
 	justify-content: space-between;
 }
@@ -35,5 +34,19 @@
 }
 .project > p {
 	max-width: 260px;
+	color: #000;
 	word-break: break-word;
+}
+
+@media screen and (max-width: 720px) {
+	.project > img {
+		width: auto;
+		height: 75px;
+	}
+	.project > p {
+		max-width: 160px;
+		font-size: .9em;
+		word-break: break-word;
+	}
+	
 }
