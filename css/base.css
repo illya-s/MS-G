@@ -1,6 +1,8 @@
 :root {
-	--body-bg: #FFFFFF;
-	--bl-color: #c5c5c5;
+	--bg-color: #FFFFFF;
+	--bl-color: #f2f1ee;
+	--bn-color: #f8b410;
+
 	--fc-body: #fff;
 	--fc-midle: #f8b410;
 }
@@ -15,7 +17,7 @@ body {
 	height: 100%;
 	display: grid;
 	grid-template-rows: max-content auto max-content;
-	background-color: var(--body-bg);
+	background-color: var(--bg-color);
 }
 body::-webkit-scrollbar {width: 6px;}
 body::-webkit-scrollbar-track {background: #202428;}
@@ -25,23 +27,33 @@ body::-webkit-scrollbar-thumb {background: #FFCF40;}
 
 header {
 	z-index: 2;
-	position: sticky;
 	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: left;
+}
+.header_links {
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	background-color: #000;
 	align-items: center;
-	justify-content: left;
 }
 
-.header_block {
-	height: fit-content;
+.header_link {
+	height: 100%;
 	padding: 5px 15px;
-	color: var(--fc-body);
+	display: flex;
+	color: var(--fc-midle);
 	font: bold 1.5em sans-serif;
 	text-decoration: none;
+	align-items: center;
+	justify-content: center;
 	transition: background-color .2s;
-} .header_block:hover {
+} .header_link:hover {
+	background-color: #202428;
+} .active {
 	background-color: #202428;
 }
 
