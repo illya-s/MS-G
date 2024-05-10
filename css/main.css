@@ -136,17 +136,24 @@ header {
 
 
 @media screen and (max-width: 720px) {
+	header {
+		height: max-content;
+	}
 	#intro {
 		width: 100%;
 		height: 40vh;
 	}
-	/* .vanta-canvas {
-		height: 100%;
-	} */
+	.panel > a > svg {
+		width: 40px;
+		height: 40px;
+		fill: var(--bl-color);
+	}
+	
 
 	.info {
-		top: 50px; left: 20px;
+		top: 50px; left: 25px;
 		gap: 7px;
+		transform: translate(0);
 	}
 	.info > h1 {
 		font-size: 1.3em;
