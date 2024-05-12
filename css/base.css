@@ -1,5 +1,6 @@
 :root {
 	--bg-color: #FFFFFF;
+	--hd-color: #202428;
 	--bl-color: #f2f1ee;
 	--bn-color: #f8b410;
 
@@ -20,8 +21,8 @@ body {
 	background-color: var(--bg-color);
 }
 body::-webkit-scrollbar {width: 6px;}
-body::-webkit-scrollbar-track {background: #202428;}
-body::-webkit-scrollbar-thumb {background: #FFCF40;}
+body::-webkit-scrollbar-track {background: var(--fc-body)}
+body::-webkit-scrollbar-thumb {background: var(--hd-color)}
 
 /* header */
 
@@ -35,10 +36,9 @@ header {
 }
 .header_links {
 	width: 100%;
-	display: flex;
-	flex-direction: row;
+	display: grid;
+	grid-template-columns: max-content max-content auto max-content;
 	background-color: #000;
-	align-items: center;
 }
 
 .header_link {
@@ -56,6 +56,42 @@ header {
 } .active {
 	background-color: #202428;
 }
+
+.change_lang {
+	user-select: none;
+	position: relative;
+	width: 35px;
+	background-color: var(--hd-color);
+}
+.change_lang > p, .custom_select > button {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.change_lang_select {
+	display: none;
+}
+.custom_select {
+	z-index: 2;
+	position: absolute;
+	right: 0;
+	width: 100%;
+	display: none;
+	flex-direction: column;
+} .custom_select > button {
+	border: none;
+	border-radius: 0;
+	background-color: var(--bn-color);
+}
+.custom_select > button, .change_lang {
+	color: var(--fc-body);
+	font: bold 1.3em sans-serif;
+}
+.change_lang:hover .custom_select {
+	display: flex;
+}
+
 
 /* -main- */
 main {

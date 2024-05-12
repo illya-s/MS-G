@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var userAgent = navigator.userAgent.toLowerCase();
 	if (userAgent.indexOf('firefox') > -1) {
 		$("html").css("scrollbar-width", "thin")
-		$("html").css("scrollbar-color", "var(--bn-color) var(--bg-color)")
+		$("html").css("scrollbar-color", "var(--hd-color) var(--fc-body)")
 	}
 
 	VANTA.RINGS({
