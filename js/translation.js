@@ -52,8 +52,12 @@ $(document).ready(function() {
 			}
 		},
 	};
+
 	if (!localStorage.getItem("lang")) {
-		localStorage.setItem("lang", "ua");
+		var userLang = navigator.language || navigator.userLanguage;
+		if (userLang == "ru-RU" || userLang == "ru") { localStorage.setItem("lang", "ru") }
+		if (userLang == "ua-UA" || userLang == "ua") { localStorage.setItem("lang", "ua") }
+		else { localStorage.setItem("lang", "en") }
 	}
 	change_lang(localStorage.getItem("lang"))
 	$(".change_lang p").text(localStorage.getItem("lang"))
