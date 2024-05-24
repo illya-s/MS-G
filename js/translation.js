@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	var emeil = "illya.melanin@51.ks.ua"
+	var tel = "+000000000000"
 	var data = {
 		"ru": {
 			"header": {
@@ -20,8 +22,8 @@ $(document).ready(function() {
 
 			"contact_information": {
 				".contact_information_text": "Контактная информация:",
-				".block_tel": "Телефон: +380 67 695 5953",
-				".block_email": "Электронная почта: ilaa64536@gmail.com"
+				".block_tel": `Телефон: ${tel}`,
+				".block_email": `Электронная почта: ${emeil}`
 			},
 			"professional_profile": {
 				".professional_profile_text": "Профессиональный профиль:",
@@ -74,8 +76,8 @@ $(document).ready(function() {
 
 			"contact_information": {
 				".contact_information_text": "Контактна інформація:",
-				".block_tel": "Телефон: +380 67 695 5953",
-				".block_email": "Електронна пошта: ilaa64536@gmail.com"
+				".block_tel": `Телефон: ${tel}`,
+				".block_email": `Електронна пошта: ${emeil}`
 			},
 			"professional_profile": {
 				".professional_profile_text": "Професійний профіль:",
@@ -128,8 +130,8 @@ $(document).ready(function() {
 
 			"contact_information": {
 				".contact_information_text": "Contact Information:",
-				".block_tel": "Phone number: +380 67 695 5953",
-				".block_email": "Email: ilaa64536@gmail.com"
+				".block_tel": `Phone number: ${tel}`,
+				".block_email": `Email: ${emeil}`
 			},
 			"professional_profile": {
 				".professional_profile_text": "Professional profile:",
