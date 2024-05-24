@@ -111,3 +111,9 @@ footer > h2 {
 	color: var(--fc-body);
 	font: normal .9em sans-serif;
 }
+
+@media screen and (max-width: 720px) {
+	.header_link {
+		font: bold 1.2em sans-serif;
+	}
+}

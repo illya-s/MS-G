@@ -16,3 +16,9 @@
 .block_ptext {
 	font-size: 1.1em;
 }
+
+@media screen and (max-width: 720px) {
+	.block_cont, .block_ptext, .professional_experience_item, .recommendations_item {
+		margin: 0;
+	}
+}
