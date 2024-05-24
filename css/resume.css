@@ -1,0 +1,18 @@
+.main_block {
+	padding: 15px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.block_title {
+	font-size: 1.4em;
+	color: var(--fc-midle);
+}
+.block_cont, .block_ptext, .professional_experience_item, .recommendations_item {
+	margin: 0 0 0 25px;
+}
+.block_ptext {
+	font-size: 1.1em;
+}

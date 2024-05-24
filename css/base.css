@@ -37,7 +37,7 @@ header {
 .header_links {
 	width: 100%;
 	display: grid;
-	grid-template-columns: max-content max-content auto max-content;
+	grid-template-columns: max-content max-content max-content auto max-content;
 	background-color: #000;
 }
 
