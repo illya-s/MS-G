@@ -27,7 +27,7 @@ $(document).ready(function() {
 			},
 			"professional_profile": {
 				".professional_profile_text": "Профессиональный профиль:",
-				".block_ptext": "Молодой и амбициозный программист с более чем 6 годами опыта в разработке программного обеспечения. Начал свой путь в мире программирования в возрасте 14 лет и с тех пор успешно завершил 4 значительных проекта (<a href='/portfolio.html'>портфолио</a>). Специализируюсь в веб- и backend-разработке, однако также имею интерес и опыт в desktop и Android разработке как хобби."
+				".block_ptext": "Молодой и амбициозный программист с более чем 6 годами опыта в разработке программного обеспечения. Начал свой путь в мире программирования в возрасте 14 лет и с тех пор успешно завершил 4 значительных проекта (<a href='/MS-G/portfolio.html'>портфолио</a>). Специализируюсь в веб- и backend-разработке, однако также имею интерес и опыт в desktop и Android разработке как хобби."
 			},
 			"skills": {
 				".skills_text": "Навыки:",
@@ -81,7 +81,7 @@ $(document).ready(function() {
 			},
 			"professional_profile": {
 				".professional_profile_text": "Професійний профіль:",
-				".block_ptext": "Молодий та амбітний програміст з більш ніж 6 роками досвіду у розробці програмного забезпечення. Почав свій шлях у світі програмування у віці 14 років і з того часу успішно завершив 4 значні проекти (<a href='/portfolio.html'>портфоліо</a>). Спеціалізуюсь у веб- та backend-розробці, однак також маю інтерес та досвід у desktop та Android розробці як хобі."
+				".block_ptext": "Молодий та амбітний програміст з більш ніж 6 роками досвіду у розробці програмного забезпечення. Почав свій шлях у світі програмування у віці 14 років і з того часу успішно завершив 4 значні проекти (<a href='/MS-G/portfolio.html'>портфоліо</a>). Спеціалізуюсь у веб- та backend-розробці, однак також маю інтерес та досвід у desktop та Android розробці як хобі."
 			},
 			"skills": {
 				".skills_text": "Навички:",
@@ -135,7 +135,7 @@ $(document).ready(function() {
 			},
 			"professional_profile": {
 				".professional_profile_text": "Professional profile:",
-				".block_ptext": "Young and ambitious programmer with more than 6 years of experience in software development. He began his journey in the world of programming at the age of 14 and has since successfully completed 4 significant projects (<a href='/portfolio.html'>portfolio</a>). I specialize in web and backend development, but I also have interest and experience in desktop and Android development as a hobby."
+				".block_ptext": "Young and ambitious programmer with more than 6 years of experience in software development. He began his journey in the world of programming at the age of 14 and has since successfully completed 4 significant projects (<a href='/MS-G/portfolio.html'>portfolio</a>). I specialize in web and backend development, but I also have interest and experience in desktop and Android development as a hobby."
 			},
 			"skills": {
 				".skills_text": "Skills:",
