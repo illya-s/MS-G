@@ -1,3 +1,7 @@
+.main_block:nth-child(2n) {
+	background-color: var(--bl-color);
+}
+
 .main_block {
 	padding: 15px;
 	width: 100%;
@@ -19,6 +23,7 @@
 }
 
 .block_ptext > a {
+	font-style: italic;
 	color: var(--url-color);
 }
 

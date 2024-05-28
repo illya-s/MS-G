@@ -3,10 +3,10 @@
 	--hd-color: #202428;
 	--bl-color: #f2f1ee;
 	--bn-color: #f8b410;
-	--url-color: #318ce7;
 
 	--fc-body: #fff;
-	--fc-midle: #f8b410;
+	--url-color: #f8b410;
+	--fc-midle: #318ce7;
 }
 img {
 	width: 100%;
@@ -46,7 +46,7 @@ header {
 	height: 100%;
 	padding: 5px 15px;
 	display: flex;
-	color: var(--fc-midle);
+	color: var(--url-color);
 	font: bold 1.5em sans-serif;
 	text-decoration: none;
 	align-items: center;
