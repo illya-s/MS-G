@@ -19,7 +19,7 @@
 }
 
 .block_ptext > a {
-	color: var(--bn-color);
+	color: var(--url-color);
 }
 
 @media screen and (max-width: 720px) {
