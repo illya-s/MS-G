@@ -17,15 +17,22 @@
 	gap: 15px;
 }
 .project {
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
 	padding: 10px;
 	max-width: fit-content;
+	outline-color: transparent;
 	border-radius: 10px;
 	background: var(--bl-color);
+	text-decoration: none;
+	color: var(--bn-color);
 	align-items: center;
 	justify-content: space-between;
+	transition: .2s ease outline-color;
+} .project:hover {
+	outline: solid 2px var(--bn-color);
 }
 .project > img {
 	width: auto;
@@ -33,8 +40,6 @@
 }
 .project > p {
 	max-width: 260px;
-	color: #000;
-	word-break: break-word;
 }
 
 @media screen and (max-width: 720px) {
