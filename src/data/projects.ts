@@ -19,7 +19,7 @@ export const projects: Project[] = [
 		stack: ["Django", "PostgreSQL", "Celery", "React", "Next.js", "Docker"],
 		github: "https://github.com/illya-s/media-platform",
 		demo: "https://example.com/media",
-		icon: "/icons8-next.js-480.png",
+		icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg",
 	},
 	{
 		id: "api-integration",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
 		longDescription: "Сложная ETL система на Django с Celery для фоновых задач. Интегрирует множество источников API, нормализует данные, индексирует в БД. Включает обработку ошибок, retry логику и логирование.",
 		stack: ["Python", "Django", "PostgreSQL", "Celery", "Redis"],
 		github: "https://github.com/illya-s/api-etl",
-		icon: "/api.png",
+		icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/aiohttp.svg",
 	},
 	{
 		id: "portfolio-site",
@@ -38,6 +38,6 @@ export const projects: Project[] = [
 		stack: ["Next.js", "TypeScript", "TailwindCSS", "GitHub Actions"],
 		github: "https://github.com/illya-s/MS-G",
 		demo: "https://illya-s.github.io/MS-G/",
-		icon: "/icons8-next.js-480.png",
+		icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg",
 	},
 ];

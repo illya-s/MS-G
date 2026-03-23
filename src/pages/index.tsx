@@ -1,10 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import SEO from "@/components/SEO";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import ProjectCard from "@/components/ProjectCard";
+import SEO from "@/components/SEO";
 import { projects } from "@/data/projects";
+import { Geist, Geist_Mono } from "next/font/google";
 import { useEffect, useState } from "react";
 
 const geistSans = Geist({
@@ -18,26 +18,26 @@ const geistMono = Geist_Mono({
 });
 
 const technologies = [
-  { name: "Python", icon: "/python.png" },
-  { name: "Django", icon: "/django-logo-negative.png" },
+  { name: "Python", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" },
+  { name: "Django", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/django.svg" },
   { name: "Django REST Framework", icon: null },
-  { name: "PostgreSQL", icon: "/postgre.png" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" },
   { name: "оптимизация запросов, индексы", icon: null },
-  { name: "Celery", icon: "/celery_512.webp" },
-  { name: "Redis", icon: "/9SY62Ld3kFV94aTLGnGj.webp" },
+  { name: "Celery", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/celery.svg" },
+  { name: "Redis", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg" },
   { name: "асинхронные задачи, ETL", icon: null },
-  { name: "Next.js", icon: "/icons8-next.js-480.png" },
-  { name: "React", icon: "/React-icon.svg.png" },
-  { name: "TypeScript", icon: "/ts-logo-512.png" },
-  { name: "TailwindCSS", icon: "/tailwindcss-mark.96ee6a5a.svg" },
-  { name: "Docker", icon: "/free-docker-logo_svgstack_com_50121774281626.png" },
-  { name: "GitHub Actions", icon: "/GitHub_Invertocat_Black.png" },
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg" },
+  { name: "React", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" },
+  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/typescript.svg" },
+  { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg" },
+  { name: "Docker", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" },
+  { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" },
   { name: "CI/CD", icon: null },
-  { name: "Git", icon: "/social.png" },
-  { name: "API интеграции", icon: "/api.png" },
+  { name: "Git", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" },
+  { name: "API интеграции", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swagger.svg" },
   { name: "проксирование медиа", icon: null },
-  { name: "JavaScript", icon: "/JavaScript-logo.png" },
-  { name: "Telegram боты", icon: "/telegram.png" },
+  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" },
+  { name: "Telegram боты", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/telegram.svg" },
 ];
 
 export default function Home() {
@@ -60,13 +60,12 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-6 py-14 sm:px-10 lg:px-12">
             {/* Header Section */}
             <header
-              className={`mb-12 rounded-2xl border border-[#3d4751] bg-[#1d232b]/70 p-8 shadow-xl shadow-black/30 backdrop-blur transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`mb-12 rounded-2xl border border-[#3d4751] bg-[#1d232b]/70 p-8 shadow-xl shadow-black/30 backdrop-blur transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
             >
               <div className="mb-4 flex items-center gap-4">
                 <img
-                  src="/logo-dark.png"
+                  src="https://avatars.githubusercontent.com/u/illya-s?v=4&s=200"
                   alt="avatar"
                   width={80}
                   height={80}
@@ -102,9 +101,8 @@ export default function Home() {
             {/* About & Skills Section */}
             <section
               id="about"
-              className={`mb-10 grid gap-6 md:grid-cols-3 transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`mb-10 grid gap-6 md:grid-cols-3 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
               style={{ transitionDelay: "100ms" }}
             >
               <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors">
@@ -127,9 +125,8 @@ export default function Home() {
             {/* Technologies Section */}
             <section
               id="technologies"
-              className={`mb-10 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`mb-10 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
               style={{ transitionDelay: "200ms" }}
             >
               <h2 className="mb-4 text-2xl font-semibold text-[#F0E9E6]">Технологии</h2>
@@ -158,9 +155,8 @@ export default function Home() {
             {/* Projects Section */}
             <section
               id="projects"
-              className={`mb-10 transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
               style={{ transitionDelay: "300ms" }}
             >
               <h2 className="mb-6 text-2xl font-semibold text-[#F0E9E6]">Проекты</h2>
@@ -176,9 +172,8 @@ export default function Home() {
             {/* Contact Section */}
             <section
               id="contact"
-              className={`mb-10 transition-all duration-700 ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              }`}
+              className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
               style={{ transitionDelay: "400ms" }}
             >
               <div className="grid gap-6 md:grid-cols-2">
