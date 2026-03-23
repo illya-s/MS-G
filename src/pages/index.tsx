@@ -188,7 +188,7 @@ export default function Home() {
                       className="flex items-center gap-4 rounded-lg bg-[#232a35] p-4 hover:bg-[#282F3D] transition-colors group"
                     >
                       <img
-                        src="/GitHub_Invertocat_Black.png"
+                        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
                         alt="GitHub"
                         width={32}
                         height={32}
