@@ -33,6 +33,15 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## GitHub Pages deployment (через GitHub Actions)
+
+Проект настроен на статический экспорт через `next export` и деплой на ветку `gh-pages`.
+
+1. Убедитесь, что ветка по умолчанию называется `main`.
+2. В файле `.github/workflows/deploy.yml` уже настроено действие на `push` в `main`.
+3. В корне хранится `out/` (генерируется `npm run export`).
+4. URL сайта: `https://<your-github-username>.github.io/<repo-name>/`.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
