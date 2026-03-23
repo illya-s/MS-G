@@ -1,5 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Head from "next/head";
+import SEO from "@/components/SEO";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ProjectCard from "@/components/ProjectCard";
+import ContactForm from "@/components/ContactForm";
+import { projects } from "@/data/projects";
+import { useEffect, useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,16 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-const skills = [
-  "Django, REST Framework",
-  "PostgreSQL, SQL optimization",
-  "Celery, Redis, queueing",
-  "JWT, email-auth, OAuth",
-  "Next.js, React, TypeScript",
-  "SSR, SSG, static export",
-  "Tailwind CSS, Styled UI",
-];
 
 const technologies = [
   { name: "Python", icon: "/python.png" },
@@ -44,109 +40,104 @@ const technologies = [
   { name: "Telegram боты", icon: "/telegram.png" },
 ];
 
-const experience = [
-  {
-    role: "Пока нет",
-    company: "",
-    period: "",
-    details: "",
-  },
-];
-
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <>
-      <Head>
-        <title>Илья - Full-Stack Developer (Django + Next.js)</title>
-        <meta
-          name="description"
-          content="Портфолио Full-Stack Developer: Django, PostgreSQL, React, Next.js, API, Celery. CV с Github Actions deploy."
-        />
-      </Head>
+      <SEO />
       <div
         className={`${geistSans.className} ${geistMono.className} min-h-screen bg-[#191F25] text-[#F0E9E6]`}
       >
-        <div className="mx-auto max-w-5xl px-6 py-14 sm:px-10 lg:px-12">
-          <header className="mb-12 rounded-2xl border border-[#3d4751] bg-[#1d232b]/70 p-8 shadow-xl shadow-black/30 backdrop-blur">
-            <div className="mb-4 flex items-center gap-4">
-              <img
-                src="/logo-dark.png"
-                alt="avatar"
-                width={80}
-                height={80}
-                className="rounded-full border-2 border-[#5f6d82] bg-[#222a38] p-2 object-contain"
-              />
-              <div>
-                <h1 className="text-4xl font-bold tracking-tight text-[#F0E9E6] sm:text-5xl">
-                  Меланин Илья
-                </h1>
-                <p className="text-sm text-[#8eb0cb]">Full-Stack Developer (Django + React / Next.js), Media Platform Engineer</p>
-              </div>
-            </div>
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-[#d1c8c2]">
-              <span className="rounded-md bg-[#282F3D] px-3 py-1">Украина</span>
-              <span className="rounded-md bg-[#282F3D] px-3 py-1">+380676955953</span>
-              <span className="rounded-md bg-[#282F3D] px-3 py-1">ilya@example.com</span>
-              <a
-                href="https://github.com/illya-s"
-                className="rounded-md bg-[#282F3D] px-3 py-1 text-[#8ecfdf] hover:text-[#aee0eb]"
-              >
-                github.com/illya-s
-              </a>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2 text-[#9fb4c6]">
-              <span className="rounded-md bg-[#232a35] px-3 py-1">🚀 Продуктовая архитектура</span>
-              <span className="rounded-md bg-[#232a35] px-3 py-1">🔒 Безопасность</span>
-              <span className="rounded-md bg-[#232a35] px-3 py-1">⚡ Производительность</span>
-            </div>
-          </header>
+        <Navbar />
 
-          <section className="mb-10 grid gap-6 md:grid-cols-3">
-            <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5">
-              <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Обо мне</h2>
-              <p className="text-[#c7c1ba] leading-relaxed">
-                Системный инженер с опытом проектирования архитектуры, создания
-                высоконагруженных Django-приложений и производительного
-                фронтенда на Next.js. Предпочитаю простую структуру, ясный
-                код и контроль всех компонентов системы.
-              </p>
-            </article>
-            <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 md:col-span-2">
-              <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Ключевые компетенции</h2>
-              <ul className="grid gap-2 text-[#c7c1ba] md:grid-cols-2">
-                {skills.map((skill) => (
-                  <li key={skill} className="rounded-md bg-[#232a35] px-3 py-2">
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          </section>
-
-          <section className="mb-10 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6">
-            <h2 className="mb-4 text-2xl font-semibold text-[#F0E9E6]">Опыт</h2>
-            <div className="space-y-4">
-              {experience.map((item) => (
-                <div key={item.role}>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-[#f8f4f1]">{item.role}</h3>
-                    <span className="text-sm text-[#a5a09c]">{item.period}</span>
-                  </div>
-                  <p className="text-[#c7c1ba]">{item.company}</p>
-                  <p className="mt-1 text-[#c7c1ba]">{item.details}</p>
+        {/* Main Content with padding for fixed navbar */}
+        <main className="pt-20">
+          <div className="mx-auto max-w-5xl px-6 py-14 sm:px-10 lg:px-12">
+            {/* Header Section */}
+            <header
+              className={`mb-12 rounded-2xl border border-[#3d4751] bg-[#1d232b]/70 p-8 shadow-xl shadow-black/30 backdrop-blur transition-all duration-700 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
+              <div className="mb-4 flex items-center gap-4">
+                <img
+                  src="/logo-dark.png"
+                  alt="avatar"
+                  width={80}
+                  height={80}
+                  className="rounded-full border-2 border-[#5f6d82] bg-[#222a38] p-2 object-contain"
+                />
+                <div>
+                  <h1 className="text-4xl font-bold tracking-tight text-[#F0E9E6] sm:text-5xl">
+                    Меланин Илья
+                  </h1>
+                  <p className="text-sm text-[#8eb0cb]">
+                    Full-Stack Developer (Django + React / Next.js), Media Platform Engineer
+                  </p>
                 </div>
-              ))}
-            </div>
-          </section>
+              </div>
+              <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-[#d1c8c2]">
+                <span className="rounded-md bg-[#282F3D] px-3 py-1">Украина</span>
+                <span className="rounded-md bg-[#282F3D] px-3 py-1">+380676955953</span>
+                <span className="rounded-md bg-[#282F3D] px-3 py-1">ilya@example.com</span>
+                <a
+                  href="https://github.com/illya-s"
+                  className="rounded-md bg-[#282F3D] px-3 py-1 text-[#8ecfdf] hover:text-[#aee0eb]"
+                >
+                  github.com/illya-s
+                </a>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2 text-[#9fb4c6]">
+                <span className="rounded-md bg-[#232a35] px-3 py-1">🚀 Продуктовая архитектура</span>
+                <span className="rounded-md bg-[#232a35] px-3 py-1">🔒 Безопасность</span>
+                <span className="rounded-md bg-[#232a35] px-3 py-1">⚡ Производительность</span>
+              </div>
+            </header>
 
-          <section className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6">
-              <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Технологии</h2>
+            {/* About & Skills Section */}
+            <section
+              id="about"
+              className={`mb-10 grid gap-6 md:grid-cols-3 transition-all duration-700 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "100ms" }}
+            >
+              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors">
+                <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Обо мне</h2>
+                <p className="text-[#c7c1ba] leading-relaxed">
+                  Системный инженер с опытом проектирования архитектуры, создания высоконагруженных Django-приложений и производительного фронтенда на Next.js. Предпочитаю простую структуру, ясный код и контроль всех компонентов системы.
+                </p>
+              </article>
+              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors md:col-span-2">
+                <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Ключевые компетенции</h2>
+                <ul className="grid gap-2 text-[#c7c1ba] md:grid-cols-2">
+                  <li className="rounded-md bg-[#232a35] px-3 py-2">Django, REST Framework</li>
+                  <li className="rounded-md bg-[#232a35] px-3 py-2">PostgreSQL, оптимизация</li>
+                  <li className="rounded-md bg-[#232a35] px-3 py-2">Celery, Redis, асинхронность</li>
+                  <li className="rounded-md bg-[#232a35] px-3 py-2">Next.js, React, TypeScript</li>
+                </ul>
+              </article>
+            </section>
+
+            {/* Technologies Section */}
+            <section
+              id="technologies"
+              className={`mb-10 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 transition-all duration-700 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <h2 className="mb-4 text-2xl font-semibold text-[#F0E9E6]">Технологии</h2>
               <div className="flex flex-wrap gap-3">
                 {technologies.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex items-center gap-2 rounded-md bg-[#232a35] px-3 py-2 hover:bg-[#2a3345] transition"
+                    className="flex items-center gap-2 rounded-md bg-[#232a35] px-3 py-2 hover:bg-[#2a3345] transition-all hover:scale-105"
                     title={tech.name}
                   >
                     {tech.icon && (
@@ -162,23 +153,79 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </article>
+            </section>
 
-            <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6">
-              <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Системный профиль</h2>
-              <p className="text-[#c7c1ba] leading-relaxed">
-                Архитектура с учётом масштабируемости, отказоустойчивости и
-                поддержки. Минимизирую зависимость от тяжёлых библиотек, делаю
-                безопасные собственные решения и держу процесс под контролем.
-              </p>
-            </article>
-          </section>
+            {/* Projects Section */}
+            <section
+              id="projects"
+              className={`mb-10 transition-all duration-700 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <h2 className="mb-6 text-2xl font-semibold text-[#F0E9E6]">Проекты</h2>
+              <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
+                {projects.map((project) => (
+                  <div key={project.id}>
+                    <ProjectCard project={project} />
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          <footer className="mt-12 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 text-center text-[#b9b2ab]">
-            <p className="mb-2">Нужен полноценный продукт? Я готов взять проект от базы данных до UI.</p>
-            <p>GitHub Actions deploy настроен, стандартный стек + статический экспорт.</p>
-          </footer>
-        </div>
+            {/* Contact Section */}
+            <section
+              id="contact"
+              className={`mb-10 transition-all duration-700 ${
+                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <div className="grid gap-6 md:grid-cols-2">
+                <ContactForm />
+                <div className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 backdrop-blur">
+                  <h3 className="mb-6 text-2xl font-bold text-[#F0E9E6]">Найдите меня</h3>
+                  <div className="space-y-4">
+                    <a
+                      href="https://github.com/illya-s"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 rounded-lg bg-[#232a35] p-4 hover:bg-[#282F3D] transition-colors group"
+                    >
+                      <img
+                        src="/GitHub_Invertocat_Black.png"
+                        alt="GitHub"
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
+                      />
+                      <div>
+                        <p className="font-medium text-[#F0E9E6] group-hover:text-[#8ecfdf]">GitHub</p>
+                        <p className="text-sm text-[#b9b2ab]">illya-s</p>
+                      </div>
+                    </a>
+                    <a
+                      href="mailto:ilya@example.com"
+                      className="flex items-center gap-4 rounded-lg bg-[#232a35] p-4 hover:bg-[#282F3D] transition-colors group"
+                    >
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#8ecfdf]/20">
+                        <svg className="h-5 w-5 text-[#8ecfdf]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#F0E9E6] group-hover:text-[#8ecfdf]">Email</p>
+                        <p className="text-sm text-[#b9b2ab]">ilya@example.com</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <Footer />
       </div>
     </>
   );
