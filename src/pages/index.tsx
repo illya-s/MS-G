@@ -101,7 +101,7 @@ export default function Home() {
             {/* About & Skills Section */}
             <section
               id="about"
-              className={`mb-10 grid gap-6 md:grid-cols-3 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              className={`mb-10 grid gap-6 md:grid-cols-2 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`}
               style={{ transitionDelay: "100ms" }}
             >
@@ -111,7 +111,7 @@ export default function Home() {
                   Системный инженер с опытом проектирования архитектуры, создания высоконагруженных Django-приложений и производительного фронтенда на Next.js. Предпочитаю простую структуру, ясный код и контроль всех компонентов системы.
                 </p>
               </article>
-              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors md:col-span-2">
+              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors">
                 <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Ключевые компетенции</h2>
                 <ul className="grid gap-2 text-[#c7c1ba] md:grid-cols-2">
                   <li className="rounded-md bg-[#232a35] px-3 py-2">Django, REST Framework</li>
