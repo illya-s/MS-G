@@ -1,49 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Developer portfolio
 
-## Getting Started
+Адаптивное портфолио на Next.js 16 (Pages Router), React, TypeScript и нативном CSS. Статический экспорт, локальное фото, анимации появления через IntersectionObserver с поддержкой `prefers-reduced-motion`.
 
-First, run the development server:
+## Локальный запуск
 
 ```bash
-npm run dev
-# or
+yarn install --frozen-lockfile
+cp .env.example .env # только если .env ещё не создан
+# Заполните .env своими данными
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Контакты, имя, инициалы, специализация, местоположение, GitHub, адрес сайта и ссылки проектов задаются в `.env`. Единая конфигурация — `src/config/profile.ts`. Неуказанные контакты и ссылки скрываются. Для `NEXT_PUBLIC_SITE_URL` и внешних ссылок указывайте полный URL с `https://`.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+`NEXT_PUBLIC_*` — публичные данные, включаемые в HTML/JavaScript при сборке. Это конфигурация, а не способ скрыть контакты от посетителей. Секреты здесь хранить нельзя. После изменения значений перезапустите dev-сервер или пересоберите сайт. `.env` исключён из Git; `.env.example` содержит шаблон без личных данных.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Форма подготавливает `mailto:`-письмо в почтовом клиенте посетителя; отправку нужно подтвердить в клиенте. Серверной отправки нет.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Проверка и сборка
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+yarn lint
+yarn tsc --noEmit
+yarn build
+```
 
-## Learn More
+Результат — каталог `out/`, который можно раздать любым статическим сервером. `next start` не используется для статического экспорта.
 
-To learn more about Next.js, take a look at the following resources:
+GitHub Pages workflow читает одноимённые `NEXT_PUBLIC_*` из **Settings → Secrets and variables → Actions → Variables**. Заполните их перед публикацией: локальный `.env` не попадает в GitHub. `configure-pages` настраивает basePath для репозитория.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Файлы
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## GitHub Pages deployment (через GitHub Actions)
-
-Проект настроен на статический экспорт через `next export` и деплой на ветку `gh-pages`.
-
-1. Убедитесь, что ветка по умолчанию называется `main`.
-2. В файле `.github/workflows/deploy.yml` уже настроено действие на `push` в `main`.
-3. В корне хранится `out/` (генерируется `npm run export`).
-4. URL сайта: `https://<your-github-username>.github.io/<repo-name>/`.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- `src/pages/index.tsx` — разделы страницы и появление при прокрутке.
+- `src/styles/globals.css` — дизайн, адаптивность, состояния элементов и анимации.
+- `src/imgs/photo1.jpg` — портрет, подключённый статическим импортом.
+- `src/data/projects.ts` — описания проектов и стек.
+- `src/config/profile.ts` — публичные данные из окружения.

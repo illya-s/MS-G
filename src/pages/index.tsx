@@ -1,227 +1,90 @@
+import Image from "next/image";
+import { useEffect } from "react";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import SEO from "@/components/SEO";
+import { profile } from "@/config/profile";
 import { projects } from "@/data/projects";
-import { Geist, Geist_Mono } from "next/font/google";
-import { useEffect, useState } from "react";
+import portrait from "@/imgs/photo1.jpg";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const technologies = [
-  { name: "Python", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg" },
-  { name: "Django", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/django.svg" },
-  { name: "Django REST Framework", icon: null },
-  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postgresql.svg" },
-  { name: "оптимизация запросов, индексы", icon: null },
-  { name: "Celery", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/celery.svg" },
-  { name: "Redis", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redis.svg" },
-  { name: "асинхронные задачи, ETL", icon: null },
-  { name: "Next.js", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg" },
-  { name: "React", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg" },
-  { name: "TypeScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/typescript.svg" },
-  { name: "TailwindCSS", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg" },
-  { name: "Docker", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/docker.svg" },
-  { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" },
-  { name: "CI/CD", icon: null },
-  { name: "Git", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg" },
-  { name: "API интеграции", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/swagger.svg" },
-  { name: "проксирование медиа", icon: null },
-  { name: "JavaScript", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg" },
-  { name: "Telegram боты", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/telegram.svg" },
+const skills = [
+  { number: "01", name: "Backend", subtitle: "Надёжная основа", items: ["Python", "Django", "REST Framework", "PostgreSQL"] },
+  { number: "02", name: "Frontend", subtitle: "Продуманный интерфейс", items: ["React", "Next.js", "TypeScript", "JavaScript", "CSS"] },
+  { number: "03", name: "Infrastructure", subtitle: "Всё работает вместе", items: ["Docker", "GitHub Actions", "Git", "CI/CD"] },
+  { number: "04", name: "Integrations", subtitle: "Данные в движении", items: ["Celery", "Redis", "ETL", "API", "Telegram Bots"] },
 ];
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
+    const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("reveal-pending");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    if (!preference.matches) elements.forEach(element => {
+      if (element.getBoundingClientRect().top > window.innerHeight) {
+        element.classList.add("reveal-pending");
+        observer.observe(element);
+      }
+    });
+    const showAll = () => {
+      if (preference.matches) { observer.disconnect(); elements.forEach(el => el.classList.remove("reveal-pending")); }
+    };
+    preference.addEventListener("change", showAll);
+    return () => { observer.disconnect(); preference.removeEventListener("change", showAll); elements.forEach(el => el.classList.remove("reveal-pending")); };
   }, []);
 
-  return (
-    <>
-      <SEO />
-      <div
-        className={`${geistSans.className} ${geistMono.className} min-h-screen bg-[#191F25] text-[#F0E9E6]`}
-      >
-        <Navbar />
-
-        {/* Main Content with padding for fixed navbar */}
-        <main className="pt-20">
-          <div className="mx-auto max-w-5xl px-6 py-14 sm:px-10 lg:px-12">
-            {/* Header Section */}
-            <header
-              className={`mb-12 rounded-2xl border border-[#3d4751] bg-[#1d232b]/70 p-8 shadow-xl shadow-black/30 backdrop-blur transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-            >
-              <div className="mb-4 flex items-center gap-4">
-                <img
-                  src="https://avatars.githubusercontent.com/u/illya-s?v=4&s=200"
-                  alt="avatar"
-                  width={80}
-                  height={80}
-                  className="rounded-full border-2 border-[#5f6d82] bg-[#222a38] p-2 object-contain"
-                />
-                <div>
-                  <h1 className="text-4xl font-bold tracking-tight text-[#F0E9E6] sm:text-5xl">
-                    Меланин Илья
-                  </h1>
-                  <p className="text-sm text-[#8eb0cb]">
-                    Full-Stack Developer (Django + React / Next.js), Media Platform Engineer
-                  </p>
-                </div>
-              </div>
-              <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-[#d1c8c2]">
-                <span className="rounded-md bg-[#282F3D] px-3 py-1">Украина</span>
-                <span className="rounded-md bg-[#282F3D] px-3 py-1">+380676955953</span>
-                <span className="rounded-md bg-[#282F3D] px-3 py-1">ilya@example.com</span>
-                <a
-                  href="https://github.com/illya-s"
-                  className="rounded-md bg-[#282F3D] px-3 py-1 text-[#8ecfdf] hover:text-[#aee0eb]"
-                >
-                  github.com/illya-s
-                </a>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2 text-[#9fb4c6]">
-                <span className="rounded-md bg-[#232a35] px-3 py-1">🚀 Продуктовая архитектура</span>
-                <span className="rounded-md bg-[#232a35] px-3 py-1">🔒 Безопасность</span>
-                <span className="rounded-md bg-[#232a35] px-3 py-1">⚡ Производительность</span>
-              </div>
-            </header>
-
-            {/* About & Skills Section */}
-            <section
-              id="about"
-              className={`mb-10 grid gap-6 md:grid-cols-2 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              style={{ transitionDelay: "100ms" }}
-            >
-              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors">
-                <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Обо мне</h2>
-                <p className="text-[#c7c1ba] leading-relaxed">
-                  Системный инженер с опытом проектирования архитектуры, создания высоконагруженных Django-приложений и производительного фронтенда на Next.js. Предпочитаю простую структуру, ясный код и контроль всех компонентов системы.
-                </p>
-              </article>
-              <article className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-5 hover:border-[#5f6d82] transition-colors">
-                <h2 className="mb-3 text-xl font-semibold text-[#F0E9E6]">Ключевые компетенции</h2>
-                <ul className="grid gap-2 text-[#c7c1ba] md:grid-cols-2">
-                  <li className="rounded-md bg-[#232a35] px-3 py-2">Django, REST Framework</li>
-                  <li className="rounded-md bg-[#232a35] px-3 py-2">PostgreSQL, оптимизация</li>
-                  <li className="rounded-md bg-[#232a35] px-3 py-2">Celery, Redis, асинхронность</li>
-                  <li className="rounded-md bg-[#232a35] px-3 py-2">Next.js, React, TypeScript</li>
-                </ul>
-              </article>
-            </section>
-
-            {/* Technologies Section */}
-            <section
-              id="technologies"
-              className={`mb-10 rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              style={{ transitionDelay: "200ms" }}
-            >
-              <h2 className="mb-4 text-2xl font-semibold text-[#F0E9E6]">Технологии</h2>
-              <div className="flex flex-wrap gap-3">
-                {technologies.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-2 rounded-md bg-[#232a35] px-3 py-2 hover:bg-[#2a3345] transition-all hover:scale-105"
-                    title={tech.name}
-                  >
-                    {tech.icon && (
-                      <img
-                        src={tech.icon}
-                        alt={tech.name}
-                        width={24}
-                        height={24}
-                        className="h-6 w-6 object-contain"
-                      />
-                    )}
-                    <span className="text-sm text-[#c7c1ba]">{tech.name}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Projects Section */}
-            <section
-              id="projects"
-              className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              style={{ transitionDelay: "300ms" }}
-            >
-              <h2 className="mb-6 text-2xl font-semibold text-[#F0E9E6]">Проекты</h2>
-              <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
-                {projects.map((project) => (
-                  <div key={project.id}>
-                    <ProjectCard project={project} />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Contact Section */}
-            <section
-              id="contact"
-              className={`mb-10 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                }`}
-              style={{ transitionDelay: "400ms" }}
-            >
-              <div className="grid gap-6 md:grid-cols-2">
-                <ContactForm />
-                <div className="rounded-xl border border-[#3d4751] bg-[#1d232b]/70 p-6 backdrop-blur">
-                  <h3 className="mb-6 text-2xl font-bold text-[#F0E9E6]">Найдите меня</h3>
-                  <div className="space-y-4">
-                    <a
-                      href="https://github.com/illya-s"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-4 rounded-lg bg-[#232a35] p-4 hover:bg-[#282F3D] transition-colors group"
-                    >
-                      <img
-                        src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg"
-                        alt="GitHub"
-                        width={32}
-                        height={32}
-                        className="h-8 w-8"
-                      />
-                      <div>
-                        <p className="font-medium text-[#F0E9E6] group-hover:text-[#8ecfdf]">GitHub</p>
-                        <p className="text-sm text-[#b9b2ab]">illya-s</p>
-                      </div>
-                    </a>
-                    <a
-                      href="mailto:ilya@example.com"
-                      className="flex items-center gap-4 rounded-lg bg-[#232a35] p-4 hover:bg-[#282F3D] transition-colors group"
-                    >
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#8ecfdf]/20">
-                        <svg className="h-5 w-5 text-[#8ecfdf]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="font-medium text-[#F0E9E6] group-hover:text-[#8ecfdf]">Email</p>
-                        <p className="text-sm text-[#b9b2ab]">ilya@example.com</p>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
-
-        <Footer />
-      </div>
-    </>
-  );
+  return <>
+    <SEO />
+    <a className="skip-link" href="#main">Перейти к содержимому</a>
+    <Navbar />
+    <main id="main">
+      <section id="home" className="container hero">
+        <div className="hero-copy">
+          <div className="eyebrow hero-eyebrow"><span className="status-dot" />{profile.role}<span className="edition">PORTFOLIO / 2026</span></div>
+          <h1>Сложные задачи.<br /><span className="accent">Чистые</span><br />решения<span className="accent">.</span></h1>
+          <p className="hero-intro">Привет, я <strong>{profile.name}.</strong><br />Проектирую системы и создаю интерфейсы.<br />От первой идеи — до работающего продукта.</p>
+          <div className="hero-actions"><a href="#projects" className="button button-primary">Смотреть проекты <span aria-hidden="true">↗</span></a><a href="#contact" className="text-link">Давайте знакомиться <span aria-hidden="true">↗</span></a></div>
+          <div className="hero-stack mono"><span>PYTHON / DJANGO</span><span>REACT / NEXT.JS</span></div>
+        </div>
+        <div className="portrait-composition">
+          <div className="portrait-outline" aria-hidden="true" />
+          <figure className="portrait-frame">
+            <Image src={portrait} alt={profile.name} fill sizes="(max-width: 700px) 90vw, 42vw" unoptimized loading="eager" fetchPriority="high" placeholder="blur" />
+            <div className="portrait-shade" />
+            <span className="portrait-label mono">THE HUMAN BEHIND THE CODE</span>
+            <figcaption><span>{profile.name}</span><span className="mono">{profile.location} ↗</span></figcaption>
+          </figure>
+          <div className="code-sticker mono"><span className="code-comment">{"// подход к работе"}</span><br /><span className="accent">while</span> (idea) &#123;<br /><span className="code-indent">build. <span className="accent">ship.</span> improve.</span><br />&#125;<span className="cursor">▌</span></div>
+          <span className="portrait-coordinate mono" aria-hidden="true">&lt;developer /&gt;</span>
+        </div>
+        <div className="hero-bottom mono"><span>АРХИТЕКТУРА × КОД × ДЕТАЛИ</span><a href="#about">Листайте дальше ↓</a></div>
+      </section>
+      <div className="expertise-strip" aria-hidden="true"><div className="container"><span>BACKEND</span><i>✳</i><span>FRONTEND</span><i>✳</i><span>ARCHITECTURE</span><i>✳</i><span>API & DATA</span></div></div>
+      <section id="about" className="container section about-section" data-reveal>
+        <div className="section-caption"><span className="eyebrow">01 / ОБО МНЕ</span><span className="mono">ЧУТЬ БОЛЬШЕ КОНТЕКСТА</span></div>
+        <div className="about-layout"><h2>Вижу систему.<br /><span className="muted">Думаю о деталях.</span></h2><div className="about-copy"><p>Мне интересно, как всё устроено — и как сделать это лучше. Создаю веб-приложения, в которых продуманная архитектура встречается с удобным интерфейсом.</p><p>Мой фокус — Django, производительный фронтенд на Next.js и работа с данными. Предпочитаю ясный код, простую структуру и контроль каждого компонента системы.</p><a className="text-link" href="#technologies">Инструменты, которым доверяю ↘</a></div></div>
+        <div className="principles">{[["{ }", "Архитектура", "Простая структура. Система, которую легко развивать."], ["↗", "Производительность", "Быстрые интерфейсы, точные запросы и фоновые задачи."], ["⌘", "Внимание к деталям", "От API и обработки ошибок до последнего состояния кнопки."]].map(([icon, title, text]) => <article key={title}><span className="principle-icon" aria-hidden="true">{icon}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+      </section>
+      <section id="technologies" className="stack-section section">
+        <div className="container"><div className="section-caption" data-reveal><span className="eyebrow">02 / ТЕХНОЛОГИИ</span><span className="mono">MY TOOLKIT</span></div><div className="section-heading" data-reveal><h2>Правильные инструменты.<br /><span className="muted">Для конкретной задачи.</span></h2><p>Полный цикл разработки:<br />от базы данных до деплоя.</p></div><div className="skills-grid">{skills.map(skill => <article className="skill-card" key={skill.number} data-reveal><div className="skill-top"><span className="mono">/{skill.number}</span><span aria-hidden="true">↗</span></div><h3>{skill.name}</h3><p>{skill.subtitle}</p><ul className="tags">{skill.items.map(item => <li key={item}>{item}</li>)}</ul></article>)}</div></div>
+      </section>
+      <section id="projects" className="container section">
+        <div className="section-caption" data-reveal><span className="eyebrow">03 / ПРОЕКТЫ</span><span className="mono">SELECTED WORK</span></div><div className="section-heading" data-reveal><h2>Меньше слов.<br /><span className="muted">Больше кода.</span></h2>{profile.github && <a className="text-link" href={profile.github} target="_blank" rel="noopener noreferrer">Мой GitHub ↗</a>}</div>
+        <div className="projects-grid">{projects.map((project, index) => <ProjectCard key={project.id} project={project} index={index} />)}</div>
+      </section>
+      <section id="contact" className="contact-section section">
+        <div className="container"><div className="section-caption" data-reveal><span className="eyebrow">04 / КОНТАКТЫ</span><span className="mono">LET’S BUILD SOMETHING</span></div><div className="contact-layout" data-reveal><div><h2>Есть идея?<br />Давайте <span className="accent">создадим<span className="contact-arrow" aria-hidden="true">↗</span></span></h2><p className="contact-intro">Расскажите о своей задаче.<br />Обсудим, как превратить её в работающий продукт.</p><div className="contact-links">{profile.email && <a href={`mailto:${profile.email}`}><span className="mono">EMAIL</span><span>{profile.email} ↗</span></a>}{profile.phone && <a href={`tel:${profile.phone.replace(/[^+\d]/g, "")}`}><span className="mono">ТЕЛЕФОН</span><span>{profile.phone} ↗</span></a>}{profile.github && <a href={profile.github} target="_blank" rel="noopener noreferrer"><span className="mono">GITHUB</span><span>{profile.github.replace(/^https?:\/\//, "")} ↗</span></a>}</div></div><ContactForm /></div></div>
+      </section>
+    </main>
+    <Footer />
+  </>;
 }
